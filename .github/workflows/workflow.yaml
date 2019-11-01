@@ -1,0 +1,15 @@
+name: workflow
+on:
+  push:
+    brnaches:
+      - master
+jobs:
+  helloworld:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - run: git clone https://git.archlinux.org/arch-install-scripts.git arch
+      - run: cd arch && make
+      - run: mkdir /mnt || true
+      - run: mount --bind /mnt /mnt
+      - run: ./setup-pacstrap.sh
