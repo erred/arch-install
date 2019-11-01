@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: sudo apt install -y coreutils util-linux awk
+      - run: sudo apt install -y coreutils util-linux gawk
       - run: git clone https://git.archlinux.org/arch-install-scripts.git arch
       - run: sudo install -m755 arch/genfstab.in /usr/bin/genfstab
       - run: sudo install -m755 arch/arch-chroot.in /usr/bin/arch-chroot
