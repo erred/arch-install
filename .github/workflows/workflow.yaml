@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@master
       - run: sudo apt-get install --no-install-recommends -y asciidoc
       - run: git clone https://git.archlinux.org/arch-install-scripts.git arch
-      - run: cd arch && make arch-chroot
+      - run: cd arch && make install
       - run: mkdir /mnt || true
       - run: sudo mount --bind /mnt /mnt
       - run: sudo ./setup-pacstrap.sh
