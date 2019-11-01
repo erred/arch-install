@@ -18,14 +18,15 @@ genfstab -U /mnt >> /mnt/etc/fstab
 #
 # BEGIN post chroot
 #
+
+_tz=Europe/Amsterdam
+_host=eevee
+_user=arccy
 cat << POSTCHROOT > /mnt/install.sh
 #!/usr/bin/env zsh
 
 set -euxo pipefail
 
-_tz=Europe/Amsterdam
-_host=eevee
-_user=arccy
 
 pacman-key --init
 pacman-key --populate archlinux
