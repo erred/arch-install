@@ -2,6 +2,9 @@
 
 set -euxo pipefail
 
+pacman -S reflector
+reflector --save /etc/pacman.d/mirrorlist -f 5 -l 20 -p https
+
 pacstrap /mnt base base-devel linux linux-firmware intel-ucode \
   wpa_supplicant go{,-tools} htop man-{db,pages} neovim git python{,2,-neovim} \
   reflector exa ripgrep aria2 sudo docker openssh zsh zsh-completions yubikey-manager \
