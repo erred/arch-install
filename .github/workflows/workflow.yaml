@@ -8,9 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: sudo apt-get install --no-install-recommends -y asciidoc
       - run: git clone https://git.archlinux.org/arch-install-scripts.git arch
-      - run: cd arch && make install
-      - run: mkdir /mnt || true
+      - run: sudo install -m755 arch/genfstab.in /usr/bin/genfstab
+      - run: sudo install -m755 arch/arch-chroot.in /usr/bin/arch-chroot
+      - run: sudo install -m755 arch/pacstrap.in /usr/bin/pacstrap
+      - run: sudo mkdir /mnt || true
       - run: sudo mount --bind /mnt /mnt
       - run: sudo ./setup-pacstrap.sh
