@@ -8,8 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: sudo apt install -y autopoint arch-install-scripts
-      - run: git clone https://git.archlinux.org/pacman.git/ pacman && cd pacman && ./autogen.sh && ./configure && make && sudo make install && cd ..
-      - run: sudo mkdir /mnt || true
-      - run: sudo mount --bind /mnt /mnt
-      - run: sudo ./setup-pacstrap.sh
+      - run: sudo apt install -y squashfs
+      - run: sudo curl -LO http://mirror.rackspace.com/archlinux/iso/latest/arch/x86_64/airootfs.sfs
+      - run: sudo unsquashfs airootfs.sfs
+      - run: sudo mount --bind squashfs-root squashfs-root
+      - run: sudo mount -t proc none squashfs-root/proc
+      - run: sudo mount -t sysfs none squashfs-root/sys
+      - run: sudo mount -o bind /dev squashfs-root/dev
+      - run: sudo mount -o bind /dev/pts squashfs-root/dev/pts
+      - run: sudo cp -L /etc/resolv.conf squashfs-root/etc
+      - run: sudo cp setup.sh squashfs-root
+      - run: sudo chroot squashfs-root bash ./setup.sh
