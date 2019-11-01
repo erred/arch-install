@@ -8,11 +8,12 @@ pacman -Sy --noconfirm reflector
 reflector --save /etc/pacman.d/mirrorlist -f 5 -l 20 -p https
 
 pacstrap /mnt base base-devel linux linux-firmware intel-ucode \
-  wpa_supplicant go{,-tools} htop man-{db,pages} neovim git python{,2,-neovim} \
-  reflector exa ripgrep aria2 sudo docker openssh zsh zsh-completions yubikey-manager \
-  sway xf86-video-intel swaylock mako i3status bemenu grim slurp playerctl \
-  brightnessctl alsa-utils kitty xorg-server-xwayland noto-fonts{,-emoji,-cjk} ttf-ibm-plex
-genfstab -U >> /mnt/etc/fstab
+  wpa_supplicant git sway
+  # go{,-tools} htop man-{db,pages} neovim python{,2,-neovim} \
+  # reflector exa ripgrep aria2 sudo docker openssh zsh zsh-completions yubikey-manager \
+  # xf86-video-intel swaylock mako i3status bemenu grim slurp playerctl \
+  # brightnessctl alsa-utils kitty xorg-server-xwayland noto-fonts{,-emoji,-cjk} ttf-ibm-plex
+genfstab -U /mnt >> /mnt/etc/fstab
 
 #
 # BEGIN post chroot
