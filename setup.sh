@@ -4,7 +4,7 @@ set -euxo pipefail
 
 pacman-key --init
 pacman-key --populate archlinux
-pacman -S reflector
+pacman -Sy reflector
 reflector --save /etc/pacman.d/mirrorlist -f 5 -l 20 -p https
 
 pacstrap /mnt base base-devel linux linux-firmware intel-ucode \
