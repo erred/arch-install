@@ -8,9 +8,9 @@ pacman -Sy --noconfirm reflector
 reflector --save /etc/pacman.d/mirrorlist -f 5 -l 20 -p https
 
 pacstrap /mnt base base-devel linux linux-firmware intel-ucode \
-  wpa_supplicant git sway
+  zsh wpa_supplicant git sway
   # go{,-tools} htop man-{db,pages} neovim python{,2,-neovim} \
-  # reflector exa ripgrep aria2 sudo docker openssh zsh zsh-completions yubikey-manager \
+  # reflector exa ripgrep aria2 sudo docker openssh zsh-completions yubikey-manager \
   # xf86-video-intel swaylock mako i3status bemenu grim slurp playerctl \
   # brightnessctl alsa-utils kitty xorg-server-xwayland noto-fonts{,-emoji,-cjk} ttf-ibm-plex
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -61,7 +61,7 @@ cat < USERINSTALL > /user.sh
 set -euxo pipefail
 
 git clone https://github.com/seankhliao/config .config
-sudo ln -s $(pwd)/.config/zsh/zshenv /etc/zsh/zshenv
+sudo ln -s /home/$_user/.config/zsh/zshenv /etc/zsh/zshenv
 
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin && makepkg -si && cd ..
