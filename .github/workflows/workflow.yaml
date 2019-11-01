@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: sudo apt install -y squashfs
+      - run: sudo apt install -y squashfs-tools
       - run: sudo curl -LO http://mirror.rackspace.com/archlinux/iso/latest/arch/x86_64/airootfs.sfs
       - run: sudo unsquashfs airootfs.sfs
       - run: sudo mount --bind squashfs-root squashfs-root
