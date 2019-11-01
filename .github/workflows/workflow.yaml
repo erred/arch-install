@@ -5,7 +5,7 @@ on: [push, pull_request]
 #     brnaches:
 #       - master
 jobs:
-  helloworld:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
