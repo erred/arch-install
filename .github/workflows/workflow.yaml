@@ -8,15 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      # - run: sudo apt install -y coreutils util-linux gawk
       - run: sudo apt install -y asciidoc
-      - run: git clone https://git.archlinux.org/arch-install-scripts.git arch
-      - run: cd arch && sudo make install && cd ..
-      - run: git clone https://git.archlinux.org/pacman.git/ pacman
-      - run: cd pacman && ./configure && make && sudo make install && cd ..
-      # - run: sudo install -m755 arch/genfstab.in /usr/bin/genfstab
-      # - run: sudo install -m755 arch/arch-chroot.in /usr/bin/arch-chroot
-      # - run: sudo install -m755 arch/pacstrap.in /usr/bin/pacstrap
+      - run: git clone https://git.archlinux.org/arch-install-scripts.git arch && cd arch && sudo make install && cd ..
+      - run: git clone https://git.archlinux.org/pacman.git/ pacman && cd pacman && ./autogen.sh && ./configure && make && sudo make install && cd ..
       - run: sudo mkdir /mnt || true
       - run: sudo mount --bind /mnt /mnt
       - run: sudo ./setup-pacstrap.sh
