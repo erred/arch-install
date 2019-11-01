@@ -18,7 +18,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 #
 # BEGIN post chroot
 #
-cat < POSTCHROOT > /mnt/install.sh
+cat << POSTCHROOT > /mnt/install.sh
 #!/usr/bin/env zsh
 
 set -euxo pipefail
@@ -34,12 +34,12 @@ hwclock --systohc
 sed -i 's/#en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen
 echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 echo $_host > /etc/hostname
-cat < RESOLV > /etc/resolv.conf
+cat << RESOLV > /etc/resolv.conf
 nameserver 8.8.8.8
 nameserver 8.8.8.8
 nameserver 2001:4860:4860::8888
 RESOLV
-cat < HOSTSEOF > /etc/hosts
+cat << HOSTSEOF > /etc/hosts
 127.0.0.1   localhost
 ::1         localhost
 127.0.1.1   $_host.localdomain  $_host
