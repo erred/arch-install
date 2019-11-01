@@ -33,6 +33,7 @@ pacman-key --populate archlinux
 ln -sf /usr/share/zoneinfo/$_tz /etc/localtime
 hwclock --systohc
 sed -i 's/#en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen
+locale-gen
 echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 echo $_host > /etc/hostname
 cat << RESOLV > /etc/resolv.conf
@@ -55,7 +56,7 @@ sed -i 's/# %wheel/%wheel/' /etc/sudoers
 #
 # begin post user
 #
-cat < USERINSTALL > /user.sh
+cat << USERINSTALL > /user.sh
 #!/usr/bin/env zsh
 
 set -euxo pipefail

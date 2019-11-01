@@ -1,8 +1,9 @@
 name: workflow
-on:
-  push:
-    brnaches:
-      - master
+on: [push, pull_request]
+# on:
+#   push:
+#     brnaches:
+#       - master
 jobs:
   helloworld:
     runs-on: ubuntu-latest
