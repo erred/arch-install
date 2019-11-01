@@ -13,7 +13,6 @@ pacstrap /mnt base base-devel linux linux-firmware intel-ucode \
   # reflector exa ripgrep aria2 sudo docker openssh zsh zsh-completions yubikey-manager \
   # xf86-video-intel swaylock mako i3status bemenu grim slurp playerctl \
   # brightnessctl alsa-utils kitty xorg-server-xwayland noto-fonts{,-emoji,-cjk} ttf-ibm-plex
-mount --bind /mnt /mnt
 genfstab -U /mnt >> /mnt/etc/fstab
 
 #
