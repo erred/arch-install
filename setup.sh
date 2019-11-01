@@ -65,11 +65,11 @@ git clone https://github.com/seankhliao/config .config
 sudo ln -s /home/$_user/.config/zsh/zshenv /etc/zsh/zshenv
 
 git clone https://aur.archlinux.org/yay-bin.git
-cd yay-bin && makepkg -si && cd ..
+cd yay-bin && makepkg -si --noconfirm && cd ..
 yay -S wl-clipboard-x11 tag-ag
 
 git clone https://github.com/seankhliao/pkgbuilds
-cd pkgbuilds/sway-service && makepkg -si && cd ..
+cd pkgbuilds/sway-service && makepkg -si --noconfirm && cd ..
 mkdir -p data/{down,screen,xdg/{nvim/{backup,undo},zsh}}
 
 USERINSTALL
