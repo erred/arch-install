@@ -56,7 +56,7 @@ sed -i 's/# %wheel/%wheel/' /etc/sudoers
 #
 # begin post user
 #
-cat << USERINSTALL > /user.sh
+cat << USERINSTALL > /home/$_user/user.sh
 #!/usr/bin/env zsh
 
 set -euxo pipefail
@@ -76,9 +76,9 @@ USERINSTALL
 #
 # end post user
 #
-chmod +x /user.sh
+chmod +x /home/$_user/user.sh
 
-su -c /user.sh - $_user
+# su -c /user.sh - $_user
 
 
 POSTCHROOT
@@ -93,3 +93,4 @@ echo "\t\tcheck /mnt/etc/fstab for errors (bind mount)"
 echo "\t\tsetup boot entry with uuid"
 echo "\t\tset passwd for root"
 echo "\t\tset passwd for $_user"
+echo "\t\trun ~/user.sh"
