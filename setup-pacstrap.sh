@@ -22,6 +22,7 @@ _host=eevee
 _user=arccy
 
 pacman-key --init
+pacman-key --populate archlinux
 ln -sf /usr/share/zoneinfo/$_tz /etc/localtime
 hwclock --systohc
 sed -i 's/#en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen
