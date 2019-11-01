@@ -8,8 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: sudo apt install -y asciidoc autopoint
-      - run: git clone https://git.archlinux.org/arch-install-scripts.git arch && cd arch && sudo make install && cd ..
+      - run: sudo apt install -y autopoint arch-install-scripts
       - run: git clone https://git.archlinux.org/pacman.git/ pacman && cd pacman && ./autogen.sh && ./configure && make && sudo make install && cd ..
       - run: sudo mkdir /mnt || true
       - run: sudo mount --bind /mnt /mnt
