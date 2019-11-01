@@ -2,6 +2,8 @@
 
 set -euxo pipefail
 
+pacman-key --init
+pacman-key --populate archlinux
 pacman -S reflector
 reflector --save /etc/pacman.d/mirrorlist -f 5 -l 20 -p https
 
