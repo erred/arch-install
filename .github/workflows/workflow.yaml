@@ -16,7 +16,7 @@ jobs:
       - run: sudo mount -t sysfs none squashfs-root/sys
       - run: sudo mount -o bind /dev squashfs-root/dev
       - run: sudo mount -o bind /dev/pts squashfs-root/dev/pts
-      - run: sudo mkdir squashfs-root/mnt && sudo mount --bind squashfs-root/mnt squashfs/mnt
+      - run: sudo mount -o bind squashfs-root/mnt squashfs-root/mnt
       - run: sudo cp -L /etc/resolv.conf squashfs-root/etc
       - run: sudo cp setup.sh squashfs-root
       - run: sudo chroot squashfs-root bash ./setup.sh
