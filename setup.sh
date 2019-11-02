@@ -86,6 +86,7 @@ nvim +PlugInstall +q +q
 cd pkgbuilds/sway-service && makepkg -si --noconfirm && cd ~
 mkdir -p data/{down,screen,xdg/{nvim/{backup,undo},zsh}}
 
+
 USERINSTALL
 #
 # end post user
@@ -93,8 +94,9 @@ USERINSTALL
 chown $_user:$_user /home/$_user/user.sh
 chmod +x /home/$_user/user.sh
 
-sudo systemctl enable --now docker.socket wpa_supplicant
+sudo systemctl enable docker.socket wpa_supplicant fstrim.timer pcscd.socket
 
+# some things need to execute after reboot
 # su -c /user.sh - $_user
 
 
