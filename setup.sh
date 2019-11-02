@@ -32,19 +32,23 @@ pacman-key --init
 pacman-key --populate archlinux
 ln -sf /usr/share/zoneinfo/$_tz /etc/localtime
 hwclock --systohc
-sed -i 's/auth      required  pam_unix.so     try_first_pass nullok/auth      required  pam_unix.so     try_first_pass nullok nodelay/'
 
+sed -i 's/auth      required  pam_unix.so     try_first_pass nullok/auth      required  pam_unix.so     try_first_pass nullok nodelay/' /etc/pam.d/system-auth
 sed -i 's/#UseSyslog/UseSyslog/' /etc/pacman.conf
 sed -i 's/#Color/Color/' /etc/pacman.conf
 sed -i 's/#TotalDownload/TotalDownload/' /etc/pacman.conf
 sed -i 's/#VerbosePkgLists/VerbosePkgLists/' /etc/pacman.conf
 sed -i 's/#DefaultTimeoutStartSec=90s/DefaultTimeoutStartSec=10s/' /etc/systemd/user.conf /etc/systemd/system.conf
 sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=10s/' /etc/systemd/user.conf /etc/systemd/system.conf
+sed -i 's|/bin/bash|/bin/zsh|' /etc/default/useradd
 sed -i 's/#en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen
+
 locale-gen
 echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 echo $_host > /etc/hostname
+echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 
+rm /etc/resolve.conf || true
 cat << RESOLVEOF > /etc/resolv.conf
 nameserver 8.8.8.8
 nameserver 8.8.8.8
@@ -58,10 +62,8 @@ cat << HOSTSEOF > /etc/hosts
 HOSTSEOF
 
 rm -rf /etc/skel/.*
-sed -i 's|/bin/bash|/bin/zsh|' /etc/default/useradd
 groupadd -r sudo
 useradd -m -G adm,log,wheel,docker $_user
-sed -i 's/# %wheel/%wheel/' /etc/sudoers
 
 #
 # begin post user
