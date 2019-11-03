@@ -63,7 +63,7 @@ HOSTSEOF
 
 rm -rf /etc/skel/.*
 groupadd -r sudo
-useradd -m -G adm,log,wheel,docker $_user
+useradd -m -G adm,log,wheel,docker,input,video $_user
 
 #
 # begin post user
