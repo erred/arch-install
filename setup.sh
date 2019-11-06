@@ -107,7 +107,7 @@ POSTCHROOT
 chmod +x /mnt/install.sh
 arch-chroot /mnt /install.sh
 
-unset -x
+set +x
 echo "\n\n  TODO:"
 echo "      check /mnt/etc/fstab for errors (bind mount)"
 echo "      setup boot entry with uuid"
