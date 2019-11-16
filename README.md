@@ -12,3 +12,8 @@ install archlinux
 5. check bootloader entries
 6. set passwd for root + user
 7. run user script as user
+
+```
+curl -LO https://raw.githubusercontent.com/seankhliao/arch-install/master/setup.sh
+chmod +x setup.sh
+```
